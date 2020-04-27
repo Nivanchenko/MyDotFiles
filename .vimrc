@@ -1,4 +1,4 @@
-"NIvanchenko ----
+"NIvanchenko 
 set nocompatible
 "filetype plugin on
 filetype off
