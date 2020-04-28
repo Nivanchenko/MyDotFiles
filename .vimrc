@@ -50,6 +50,11 @@ highlight lCursor guifg=NONE guibg=Cyan
 :nmap <LeftMouse> <nop>
 :imap <LeftMouse> <nop>
 :vmap <LeftMouse> <nop>
+
+:nmap <2-LeftMouse> <nop>
+:imap <2-LeftMouse> <nop>
+:vmap <2-LeftMouse> <nop>
+
 :map <leader>c "*y
 :map <leader>v "*p
 
