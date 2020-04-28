@@ -37,12 +37,14 @@ syntax enable
 set number 
 highlight LineNr ctermfg=grey
 
+set laststatus=2
+set noshowmode
+
 set keymap=russian-jcukenwin
 set iminsert=0 
 set imsearch=0
 inoremap <C-l> <C-^>
 highlight lCursor guifg=NONE guibg=Cyan 
-"map <C-b> :buffers<CR>
 
 :set mouse=n
 :nmap <LeftMouse> <nop>
@@ -51,10 +53,25 @@ highlight lCursor guifg=NONE guibg=Cyan
 :map <leader>c "*y
 :map <leader>v "*p
 
-" Buffers - explore/next/previous: Alt-F12, F12, Shift-F12.
-"nnoremap <Leader> <M-F12> :BufExplorer<CR>
+" Buffers 
 nnoremap <Leader>] :bn<CR>
 nnoremap <Leader>[ :bp<CR>
+
+" Some ( [ { stuff
+function! ConditionalPairMap(open, close)
+  let line = getline('.')
+  let col = col('.')
+  if col < col('$') || stridx(line, a:close, col + 1) != -1
+    return a:open
+  else
+    return a:open . a:close . repeat("\<left>", len(a:close))
+  endif 
+endfunction
+inoremap <expr> ( ConditionalPairMap('(', ')')
+inoremap <expr> { ConditionalPairMap('{', '}')
+inoremap <expr> [ ConditionalPairMap('[', ']')
+inoremap <expr> " ConditionalPairMap('"', '"')
+inoremap <expr> ' ConditionalPairMap("'", "'")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Open terminal inside Vim
