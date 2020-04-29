@@ -13,6 +13,7 @@ call vundle#begin()		" required, all plugins must appear after this line.
 "{{ The Basics }}
     Plugin 'gmarik/Vundle.vim'                           " Vundle
     Plugin 'itchyny/lightline.vim'                       " Lightline statusbar
+    Plugin 'delimitMate.vim'                             " brakets and stuff
 "{{ File management }}
     Plugin 'vifm/vifm.vim'                               " Vifm
 call vundle#end()		" required, all plugins must appear before this line.
@@ -63,20 +64,20 @@ nnoremap <Leader>] :bn<CR>
 nnoremap <Leader>[ :bp<CR>
 
 " Some ( [ { stuff
-function! ConditionalPairMap(open, close)
-  let line = getline('.')
-  let col = col('.')
-  if col < col('$') || stridx(line, a:close, col + 1) != -1
-    return a:open
-  else
-    return a:open . a:close . repeat("\<left>", len(a:close))
-  endif 
-endfunction
-inoremap <expr> ( ConditionalPairMap('(', ')')
-inoremap <expr> { ConditionalPairMap('{', '}')
-inoremap <expr> [ ConditionalPairMap('[', ']')
-inoremap <expr> " ConditionalPairMap('"', '"')
-inoremap <expr> ' ConditionalPairMap("'", "'")
+"function! ConditionalPairMap(open, close)
+"  let line = getline('.')
+"  let col = col('.')
+"  if col < col('$') || stridx(line, a:close, col + 1) != -1
+"    return a:open
+"  else
+"    return a:open . a:close . repeat("\<left>", len(a:close))
+"  endif 
+"endfunction
+"inoremap <expr> ( ConditionalPairMap('(', ')')
+"inoremap <expr> { ConditionalPairMap('{', '}')
+"inoremap <expr> [ ConditionalPairMap('[', ']')
+"inoremap <expr> " ConditionalPairMap('"', '"')
+"inoremap <expr> ' ConditionalPairMap("'", "'")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Open terminal inside Vim
