@@ -14,6 +14,8 @@ call vundle#begin()		" required, all plugins must appear after this line.
     Plugin 'gmarik/Vundle.vim'                           " Vundle
     Plugin 'itchyny/lightline.vim'                       " Lightline statusbar
     Plugin 'delimitMate.vim'                             " brakets and stuff
+"    Plugin 'valloric/youcompleteme'                      " auto complete
+    Plugin 'ycm-core/YouCompleteMe'    
 "{{ File management }}
     Plugin 'vifm/vifm.vim'                               " Vifm
 call vundle#end()		" required, all plugins must appear before this line.
@@ -36,6 +38,7 @@ syntax enable
 
 "set mousemodel=popup
 set number 
+set relativenumber
 highlight LineNr ctermfg=grey
 
 set laststatus=2
