@@ -18,6 +18,7 @@ call vundle#begin()		" required, all plugins must appear after this line.
     Plugin 'ycm-core/YouCompleteMe'    
 "{{ File management }}
     Plugin 'vifm/vifm.vim'                               " Vifm
+    Plugin 'vim-vdebug/vdebug'                           " Python and other debuggin'
 call vundle#end()		" required, all plugins must appear before this line.
 
 filetype plugin indent on    " required
@@ -38,7 +39,7 @@ syntax enable
 
 let python_highlight_all=1
 
-"let g:ycm_autoclose_preview_window_after_insertion = 1 " YCM 
+let g:ycm_autoclose_preview_window_after_insertion = 1 " YCM 
 "let g:ycm_autoclose_preview_window_after_completion = 1 " YCM
 "let g:ycm_add_preview_to_completeopt = 0 " YCM
 " highlight Pmenu ctermbg=238 gui=bold  " ctermbg=gray guibg=gray
