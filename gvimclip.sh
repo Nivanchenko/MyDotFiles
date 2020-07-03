@@ -3,6 +3,7 @@
 # Dependencies: xclip, gvim
 
 # Copy curent text
+sleep 0.3
 xdotool key ctrl+c
 
 # Create an "ephemeral" file, that disappears with this process
@@ -21,4 +22,5 @@ gvim --nofork -c 'set nofixeol' $ephemeral_path
 xclip -selection clipboard < $ephemeral_path
 
 # Paste saved text
+sleep 0.3
 xdotool key ctrl+v
