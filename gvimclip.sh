@@ -2,6 +2,9 @@
 
 # Dependencies: xclip, gvim
 
+# Copy curent text
+xdotool key ctrl+c
+
 # Create an "ephemeral" file, that disappears with this process
 tmpfile=$(mktemp /tmp/vim-edit-clipboard.XXXXXX)
 exec 3>"$tmpfile"
@@ -16,4 +19,6 @@ xclip -selection clipboard -o > $ephemeral_path
 gvim --nofork -c 'set nofixeol' $ephemeral_path
 # Then copy it to the clipboard, removing the newline at the end
 xclip -selection clipboard < $ephemeral_path
+
+# Paste saved text
 xdotool key ctrl+v
