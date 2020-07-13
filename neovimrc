@@ -15,6 +15,7 @@ call vundle#begin()		" required, all plugins must appear after this line.
     Plugin 'itchyny/lightline.vim'                       " Lightline statusbar
     Plugin 'delimitMate.vim'                             " brakets and stuff
     Plugin 'neoclide/coc.nvim'
+    Plugin 'morhetz/gruvbox'
 "{{ File management }}
     Plugin 'vifm/vifm.vim'                               " Vifm
     Plugin 'vim-vdebug/vdebug'                           " Python and other debuggin'
@@ -36,11 +37,14 @@ filetype plugin indent on    " required
 " enable syntax and plugins (for netrw)
 syntax enable
 
+colorscheme gruvbox
+set background=dark
+
 let python_highlight_all=1
 
 " highlight Pmenu ctermbg=238 gui=bold  " ctermbg=gray guibg=gray
-highlight Pmenu ctermfg=NONE ctermbg=240 cterm=NONE guifg=NONE guibg=#64666d gui=NONE
-highlight PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=NONE guibg=#204a87 gui=NONE
+"highlight Pmenu ctermfg=NONE ctermbg=240 cterm=NONE guifg=NONE guibg=#64666d gui=NONE
+"highlight PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=NONE guibg=#204a87 gui=NONE
 
 "set mousemodel=popup
 set number 
