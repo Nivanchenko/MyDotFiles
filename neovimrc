@@ -19,6 +19,7 @@ call vundle#begin()		" required, all plugins must appear after this line.
 "{{ File management }}
     Plugin 'vifm/vifm.vim'                               " Vifm
     Plugin 'vim-vdebug/vdebug'                           " Python and other debuggin'
+    Plugin 'easymotion/vim-easymotion'                   " movement
 call vundle#end()		" required, all plugins must appear before this line.
 
 filetype plugin indent on    " required
@@ -75,6 +76,13 @@ highlight lCursor guifg=NONE guibg=Cyan
 " Buffers 
 nnoremap <Leader>] :bn<CR>
 nnoremap <Leader>[ :bp<CR>
+
+" Easy Motion
+map <leader><leader>. <Plug>(easymotion-repeat)
+map <leader><leader>f <Plug>(easymotion-overwin-f)
+map <leader><leader>j <Plug>(easymotion-overwin-line)
+map <leader><leader>k <Plug>(easymotion-overwin-line)
+map <leader><leader>w <Plug>(easymotion-overwin-w)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Open terminal inside Vim
