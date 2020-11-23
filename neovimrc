@@ -20,6 +20,14 @@ call vundle#begin()		" required, all plugins must appear after this line.
     Plugin 'vifm/vifm.vim'                               " Vifm
     Plugin 'vim-vdebug/vdebug'                           " Python and other debuggin'
     Plugin 'easymotion/vim-easymotion'                   " movement
+    Plugin 'junegunn/fzf.vim'
+"--------------=== 1С(BSL)===---------------
+    Plugin 'andreevlex/vim-language-1c-bsl' "
+    Plugin 'majutsushi/tagbar'          	            " Class/module browser
+    Plugin 'garbas/vim-snipmate'		                " Snippets manager
+    Plugin 'MarcWeber/vim-addon-mw-utils'	            " dependencies #1
+    Plugin 'tomtom/tlib_vim'		                    " dependencies #2
+"-------------------------------------------
 call vundle#end()		" required, all plugins must appear before this line.
 
 filetype plugin indent on    " required
@@ -38,10 +46,36 @@ filetype plugin indent on    " required
 " enable syntax and plugins (for netrw)
 syntax enable
 
+"--------------=== 1С(BSL)===---------------
+" указываем каталог с настройками SnipMate
+let g:snippets_dir = "~/.config/nvim/vim/bundle/vim-language-1c-bsl/snippets "
+
+
 colorscheme gruvbox
 set background=dark
 
+" Light line config
+let g:lightline = {
+      \ 'colorscheme': 'seoul256',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename', 'modified', 'keymap' ] ]
+      \ },
+      \ 'component_function': {
+      \   'keymap': 'LightLineKeymap'
+      \ },
+      \ }
+
+function! LightLineKeymap()
+    let km = &iminsert == 0 ? 'en' : 'ru'
+    call lightline#update()
+    return km
+endfunction
+
 let python_highlight_all=1
+
+" Cursor lines
+:nnoremap H :set cursorline! cursorcolumn!<CR>
 
 " highlight Pmenu ctermbg=238 gui=bold  " ctermbg=gray guibg=gray
 "highlight Pmenu ctermfg=NONE ctermbg=240 cterm=NONE guifg=NONE guibg=#64666d gui=NONE
@@ -59,6 +93,7 @@ set keymap=russian-jcukenwin
 set iminsert=0 
 set imsearch=0
 inoremap <C-l> <C-^>
+"nnoremap <C-l> <C-^>
 highlight lCursor guifg=NONE guibg=Cyan 
 
 :set mouse=n

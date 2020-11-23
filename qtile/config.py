@@ -36,12 +36,14 @@ from libqtile.widget import Spacer
 #import arcobattery
 
 #mod4 or mod = super key
-mod = "mod4"
-mod1 = "alt"
-mod2 = "control"
-home = os.path.expanduser('~')
-terminal_name = 'alacritty'
-settings_name = 'io.elementary.switchboard'
+mod   =  "mod4"
+mod1  =  "alt"
+mod2  =  "control"
+home  =  os.path.expanduser('~')
+terminal_name  =  'alacritty'
+settings_name  =  'io.elementary.switchboard'
+lock_command   =  'dm-tool lock'
+net_interface  =  'wlp2s0'
 
 #screens = [
 #    Screen(
@@ -67,7 +69,7 @@ keys = [
 # customs
     Key([mod, "control"], "space", lazy.spawn("ulauncher"), desc="u-launcher"),
     Key([mod], "s", lazy.spawn(settings_name)),
-    Key(, "Button12", lazy.spawn('flameshot gui')),
+    #Key(["Button12"], lazy.spawn('flameshot gui')),
 
 # FUNCTION KEYS
 
@@ -80,7 +82,7 @@ keys = [
     Key([mod], "f", lazy.window.toggle_fullscreen()),
 #    Key([mod], "m", lazy.spawn('pragha')),
     Key([mod], "q", lazy.window.kill()),
-    Key([mod], "r", lazy.spawn('rofi-theme-selector')),
+    Key([mod], "F12", lazy.spawn('rofi-theme-selector')),
     Key([mod], "t", lazy.spawn(terminal_name)),
 #    Key([mod], "v", lazy.spawn('pavucontrol')),
 #    Key([mod], "w", lazy.spawn('vivaldi-stable')),
@@ -98,8 +100,8 @@ keys = [
 #    Key([mod], "F8", lazy.spawn('thunar')),
 #    Key([mod], "F9", lazy.spawn('evolution')),
 #    Key([mod], "F10", lazy.spawn("spotify")),
-    Key([mod], "F11", lazy.spawn('rofi -show run -fullscreen')),
-    Key([mod], "F12", lazy.spawn('rofi -show run')),
+    Key([mod], "w", lazy.spawn('rofi -show window')),
+    Key([mod], "r", lazy.spawn('rofi -show run')),
 
 # SUPER + SHIFT KEYS
 
@@ -122,7 +124,7 @@ keys = [
 #    Key(["mod1", "control"], "g", lazy.spawn('chromium -no-default-browser-check')),
 #    Key(["mod1", "control"], "i", lazy.spawn('nitrogen')),
 #    Key(["mod1", "control"], "k", lazy.spawn('arcolinux-logout')),
-#    Key(["mod1", "control"], "l", lazy.spawn('arcolinux-logout')),
+    Key(["mod1", "control"], "l", lazy.spawn(lock_command)),
 #    Key(["mod1", "control"], "m", lazy.spawn('xfce4-settings-manager')),
 #    Key(["mod1", "control"], "o", lazy.spawn(home + '/.config/qtile/scripts/picom-toggle.sh')),
 #    Key(["mod1", "control"], "p", lazy.spawn('pamac-manager')),
@@ -161,7 +163,7 @@ keys = [
 
 # SCREENSHOTS
 
-#    Key([], "Print", lazy.spawn("scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'")),
+    Key([], "Print", lazy.spawn("flameshot gui")),
 #    Key([mod2], "Print", lazy.spawn('xfce4-screenshooter')),
 #    Key([mod2, "shift"], "Print", lazy.spawn('gnome-screenshot -i')),
 
@@ -172,7 +174,7 @@ keys = [
     Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 5")),
 
 # INCREASE/DECREASE/MUTE VOLUME
-    Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
+    Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute 0 toggle")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q set Master 5%-")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q set Master 5%+")),
 
@@ -208,11 +210,11 @@ keys = [
         lazy.layout.increase_ratio(),
         lazy.layout.delete(),
         ),
-    Key([mod, "control"], "Right",
-        lazy.layout.grow_right(),
-        lazy.layout.grow(),
-        lazy.layout.increase_ratio(),
-        lazy.layout.delete(),
+    Key([mod, "control"], "Right",lazy.screen.next_group()
+#        lazy.layout.grow_right(),
+#        lazy.layout.grow(),
+#        lazy.layout.increase_ratio(),
+#        lazy.layout.delete(),
         ),
     Key([mod, "control"], "h",
         lazy.layout.grow_left(),
@@ -220,11 +222,11 @@ keys = [
         lazy.layout.decrease_ratio(),
         lazy.layout.add(),
         ),
-    Key([mod, "control"], "Left",
-        lazy.layout.grow_left(),
-        lazy.layout.shrink(),
-        lazy.layout.decrease_ratio(),
-        lazy.layout.add(),
+    Key([mod, "control"], "Left",lazy.screen.prev_group()
+#        lazy.layout.grow_left(),
+#        lazy.layout.shrink(),
+#        lazy.layout.decrease_ratio(),
+#        lazy.layout.add(),
         ),
     Key([mod, "control"], "k",
         lazy.layout.grow_up(),
@@ -284,8 +286,8 @@ group_labels = ["1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "0",]
 #group_labels = ["", "", "", "", "", "", "", "", "", "",]
 #group_labels = ["Web", "Edit/chat", "Image", "Gimp", "Meld", "Video", "Vb", "Files", "Mail", "Music",]
 
-#group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall",]
-group_layouts = ["monadtall", "matrix", "monadtall", "bsp", "monadtall", "matrix", "monadtall", "bsp", "monadtall", "monadtall",]
+group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall",]
+#group_layouts = ["monadtall", "matrix", "monadtall", "bsp", "monadtall", "matrix", "monadtall", "bsp", "monadtall", "monadtall",]
 
 for i in range(len(group_names)):
     groups.append(
@@ -323,12 +325,12 @@ layout_theme = init_layout_theme()
 
 layouts = [
     layout.MonadTall(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
+    layout.Max(**layout_theme),
     layout.MonadWide(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
     layout.Matrix(**layout_theme),
     layout.Bsp(**layout_theme),
     layout.Floating(**layout_theme),
-    layout.RatioTile(**layout_theme),
-    layout.Max(**layout_theme)
+    layout.RatioTile(**layout_theme)
 ]
 
 # COLORS FOR THE BAR
@@ -400,26 +402,21 @@ def init_widgets_list():
                         foreground = colors[5],
                         background = colors[1],
                         ),
-               widget.keyboardlayout(
-                        configured_keyboards = ['us','ru'],
-                        foreground=colors[2],
-                        background=colors[1],
-                        ),
                 widget.Sep(
                          linewidth = 1,
                          padding = 10,
                          foreground = colors[2],
                          background = colors[1]
                          ),
-                widget.wlan(
-                        interface = "wlp2s0",
-                        foreground=colors[2],
-                        background=colors[1],
-                        ),
+               # widget.Wlan(
+               #         interface = net_interface,
+               #         foreground=colors[2],
+               #         background=colors[1],
+               #         ),
                 widget.Net(
                          font="Noto Sans",
                          fontsize=12,
-                         interface="wlp2s0",
+                         interface=net_interface,
                          foreground=colors[2],
                          background=colors[1],
                          padding = 0,
@@ -430,6 +427,24 @@ def init_widgets_list():
                          foreground = colors[2],
                          background = colors[1]
                          ),
+               widget.KeyboardLayout(configured_keyboards = ['us','ru']),
+              #          configured_keyboards = ['us','ru'],
+              #          foreground=colors[2],
+              #          background=colors[1],
+              #          ),
+               widget.Sep(
+                        linewidth = 1,
+                        padding = 10,
+                        foreground = colors[2],
+                        background = colors[1]
+                        ),
+               widget.Volume(mute_command='pactl set-sink-mute 0 toggle'),
+               widget.Sep(
+                        linewidth = 1,
+                        padding = 10,
+                        foreground = colors[2],
+                        background = colors[1]
+                        ),
                # widget.NetGraph(
                #          font="Noto Sans",
                #          fontsize=12,
@@ -546,7 +561,7 @@ def init_widgets_list():
                         foreground = colors[5],
                         background = colors[1],
                         fontsize = 14,
-                        format="%H:%M %d-%m-%Y" #format="%Y-%m-%d %H:%M"
+                        format="%A %H:%M %d.%m.%Y" #format="%Y-%m-%d %H:%M"
                         ),
                widget.Sep(
                         linewidth = 1,
