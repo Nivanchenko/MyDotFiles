@@ -421,13 +421,13 @@ def init_widgets_list():
                          background=colors[1],
                          padding = 0,
                          ),
-                widget.Sep(
-                         linewidth = 1,
-                         padding = 10,
-                         foreground = colors[2],
-                         background = colors[1]
-                         ),
-               widget.KeyboardLayout(configured_keyboards = ['us','ru']),
+              #  widget.Sep(
+              #           linewidth = 1,
+              #           padding = 10,
+              #           foreground = colors[2],
+              #           background = colors[1]
+              #           ),
+              # widget.KeyboardLayout(configured_keyboards = ['us','ru']),
               #          configured_keyboards = ['us','ru'],
               #          foreground=colors[2],
               #          background=colors[1],
@@ -561,7 +561,7 @@ def init_widgets_list():
                         foreground = colors[5],
                         background = colors[1],
                         fontsize = 14,
-                        format="%A %H:%M %d.%m.%Y" #format="%Y-%m-%d %H:%M"
+                        format="%A | %H:%M | %d.%m.%Y" #format="%Y-%m-%d %H:%M"
                         ),
                widget.Sep(
                         linewidth = 1,
@@ -647,7 +647,12 @@ dgroups_app_rules = []
 # END
 # ASSIGN APPLICATIONS TO A SPECIFIC GROUPNAME
 
-
+@hook.subscribe.client_new
+def move_copyq_to_current_group(client):
+    wm_class = client.window.get_wm_class()[0]
+    if wm_class == 'copyq':
+        client.togroup()
+       # client.group.cmd_toscreen()
 
 main = None
 
