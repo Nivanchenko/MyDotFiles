@@ -49,7 +49,7 @@ syntax enable
 "--------------=== 1С(BSL)===---------------
 " указываем каталог с настройками SnipMate
 let g:snippets_dir = "~/.config/nvim/vim/bundle/vim-language-1c-bsl/snippets "
-
+nnoremap <C-b> :set syntax=bsl<CR>
 
 colorscheme gruvbox
 set background=dark
@@ -80,6 +80,8 @@ let python_highlight_all=1
 " highlight Pmenu ctermbg=238 gui=bold  " ctermbg=gray guibg=gray
 "highlight Pmenu ctermfg=NONE ctermbg=240 cterm=NONE guifg=NONE guibg=#64666d gui=NONE
 "highlight PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=NONE guibg=#204a87 gui=NONE
+
+hi Normal guibg=NONE ctermbg=NONE
 
 "set mousemodel=popup
 set number 
