@@ -16,6 +16,7 @@ call vundle#begin()		" required, all plugins must appear after this line.
     Plugin 'delimitMate.vim'                             " brakets and stuff
     Plugin 'neoclide/coc.nvim'
     Plugin 'morhetz/gruvbox'
+    Plugin 'junegunn/vim-easy-align'
 "{{ File management }}
     Plugin 'vifm/vifm.vim'                               " Vifm
     Plugin 'vim-vdebug/vdebug'                           " Python and other debuggin'
@@ -45,6 +46,12 @@ filetype plugin indent on    " required
 
 " enable syntax and plugins (for netrw)
 syntax enable
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 "--------------=== 1С(BSL)===---------------
 " указываем каталог с настройками SnipMate

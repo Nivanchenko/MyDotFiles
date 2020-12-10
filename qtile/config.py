@@ -330,7 +330,8 @@ layouts = [
     layout.Matrix(**layout_theme),
     layout.Bsp(**layout_theme),
     layout.Floating(**layout_theme),
-    layout.RatioTile(**layout_theme)
+    layout.RatioTile(**layout_theme),
+    layout.TreeTab(**layout_theme),
 ]
 
 # COLORS FOR THE BAR
@@ -402,12 +403,12 @@ def init_widgets_list():
                         foreground = colors[5],
                         background = colors[1],
                         ),
-                widget.Sep(
-                         linewidth = 1,
-                         padding = 10,
-                         foreground = colors[2],
-                         background = colors[1]
-                         ),
+               # widget.Sep(
+               #          linewidth = 1,
+               #          padding = 10,
+               #          foreground = colors[2],
+               #          background = colors[1]
+               #          ),
                # widget.Wlan(
                #         interface = net_interface,
                #         foreground=colors[2],
@@ -593,8 +594,8 @@ widgets_screen2 = init_widgets_screen2()
 
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=26, opacity=0.85)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=26, opacity=0.85))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=26, opacity=0.55)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=26, opacity=0.55))]
 screens = init_screens()
 
 
