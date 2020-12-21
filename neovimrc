@@ -184,6 +184,7 @@ map <Leader>tk <C-w>t<C-w>K
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "set mouse=nicr
 
+set diffopt=vertical
 
 set path+=**
 

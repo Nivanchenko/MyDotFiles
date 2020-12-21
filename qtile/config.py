@@ -121,6 +121,7 @@ keys = [
 #    Key(["mod1", "control"], "c", lazy.spawn('catfish')),
 #    Key(["mod1", "control"], "e", lazy.spawn('arcolinux-tweak-tool')),
     Key([mod], "b", lazy.spawn('firefox')),
+    Key([mod, "shift"], "b", lazy.spawn('firefox -private')),
 #    Key(["mod1", "control"], "g", lazy.spawn('chromium -no-default-browser-check')),
 #    Key(["mod1", "control"], "i", lazy.spawn('nitrogen')),
 #    Key(["mod1", "control"], "k", lazy.spawn('arcolinux-logout')),
