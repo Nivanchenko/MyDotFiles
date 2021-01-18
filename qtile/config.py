@@ -44,6 +44,7 @@ terminal_name  =  'alacritty'
 settings_name  =  'io.elementary.switchboard'
 lock_command   =  'dm-tool lock'
 net_interface  =  'wlp2s0'
+filemanager    =  'io.elementary.files'
 
 #screens = [
 #    Screen(
@@ -105,7 +106,7 @@ keys = [
 
 # SUPER + SHIFT KEYS
 
-    Key([mod, "shift"], "Return", lazy.spawn('io.elementary.files')),
+    Key([mod, "shift"], "Return", lazy.spawn(filemanager)),
     Key([mod, "shift"], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")),
     Key([mod, "shift"], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
