@@ -172,8 +172,8 @@ keys = [
 # MULTIMEDIA KEYS
 
 # INCREASE/DECREASE BRIGHTNESS
-    Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 5")),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 5")),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl -d intel_backlight set 5%+")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl -d intel_backlight set 5%-")),
 
 # INCREASE/DECREASE/MUTE VOLUME
     Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute 0 toggle")),
