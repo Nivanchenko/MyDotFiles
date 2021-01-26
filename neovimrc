@@ -28,6 +28,8 @@ call vundle#begin()		" required, all plugins must appear after this line.
     Plugin 'garbas/vim-snipmate'		                " Snippets manager
     Plugin 'MarcWeber/vim-addon-mw-utils'	            " dependencies #1
     Plugin 'tomtom/tlib_vim'		                    " dependencies #2
+"Debug
+    Plugin 'puremourning/vimspector'
 "-------------------------------------------
 call vundle#end()		" required, all plugins must appear before this line.
 
@@ -45,6 +47,8 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " enable syntax and plugins (for netrw)
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+nnoremap <S-F5> <Plug>VimspectorRestart
 syntax enable
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)

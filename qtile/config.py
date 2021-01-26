@@ -45,6 +45,7 @@ settings_name  =  'io.elementary.switchboard'
 lock_command   =  'dm-tool lock'
 net_interface  =  'wlp2s0'
 filemanager    =  'io.elementary.files'
+appmenu        =  'xfce4-appfinder'
 
 #screens = [
 #    Screen(
@@ -69,6 +70,7 @@ keys = [
 
 # customs
     Key([mod, "control"], "space", lazy.spawn("ulauncher"), desc="u-launcher"),
+    Key([mod, "control"], "Return", lazy.spawn(appmenu), desc="app menu"),
     Key([mod], "s", lazy.spawn(settings_name)),
     #Key(["Button12"], lazy.spawn('flameshot gui')),
 
@@ -707,6 +709,7 @@ floating_layout = layout.Floating(float_rules=[
     #custom
     {'wname': 'Ulauncher - Application Launcher'},  # u-launcher
     {'wmclass': 'copyq'},
+    {'wmclass': 'xfce4-appfinder'},
 
 ],  fullscreen_border_width = 0, border_width = 0)
 auto_fullscreen = True
