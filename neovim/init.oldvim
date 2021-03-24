@@ -7,7 +7,7 @@ filetype off
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.config/nvim/vim/bundle/Vundle.vim
+set rtp+=~/.config/nvim/bundle/Vundle.vim
 
 call vundle#begin()		" required, all plugins must appear after this line.
 "{{ The Basics }}
@@ -19,7 +19,6 @@ call vundle#begin()		" required, all plugins must appear after this line.
     Plugin 'junegunn/vim-easy-align'
 "{{ File management }}
     Plugin 'vifm/vifm.vim'                               " Vifm
-    Plugin 'vim-vdebug/vdebug'                           " Python and other debuggin'
     Plugin 'easymotion/vim-easymotion'                   " movement
     Plugin 'junegunn/fzf.vim'
 "--------------=== 1С(BSL)===---------------
@@ -30,6 +29,12 @@ call vundle#begin()		" required, all plugins must appear after this line.
     Plugin 'tomtom/tlib_vim'		                    " dependencies #2
 "Debug
     Plugin 'puremourning/vimspector'
+"native lsp
+    Plugin 'neovim/nvim-lspconfig'
+"Telescope
+    Plugin 'nvim-lua/popup.nvim'
+    Plugin 'nvim-lua/plenary.nvim'
+    Plugin 'nvim-telescope/telescope.nvim'
 "-------------------------------------------
 call vundle#end()		" required, all plugins must appear before this line.
 
@@ -45,11 +50,20 @@ filetype plugin indent on    " required
 
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
-" enable syntax and plugins (for netrw)
+"no more suffer
+nnoremap Q <Nop>
+""
+let g:snipMate = { 'snippet_version' : 1 }
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 nnoremap <S-F5> <Plug>VimspectorRestart
 syntax enable
+
+"Telescope
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -188,37 +202,12 @@ map <Leader>tk <C-w>t<C-w>K
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "set mouse=nicr
 
+set scrolloff=4
+
 set diffopt=vertical
 
 set path+=**
 
 " Display all matching files when we tab complete
 set wildmenu
-
-" NOW WE CAN:
-" - Hit tab to :find by partial match
-" - Use * to make it fuzzy
-
-" Create the `tags` file (may need to install ctags first)
-command! MakeTags !ctags -R .
-
-" NOW WE CAN:
-" - Use ^] to jump to tag under cursor
-" - Use g^] for ambiguous tags
-" - Use ^t to jump back up the tag stack
-
-" FILE BROWSING:
-
-" Tweaks for browsing
-let g:netrw_banner=0        " disable annoying banner
-let g:netrw_browse_split=4  " open in prior window
-let g:netrw_altv=1          " open splits to the right
-let g:netrw_liststyle=3     " tree view
-let g:netrw_list_hide=netrw_gitignore#Hide()
-let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
-
-" NOW WE CAN:
-" - :edit a folder to open a file browser
-" - <CR>/v/t to open in an h-split/v-split/tab
-" - check |netrw-browse-maps| for more mappings
-
+"lua require'lspconfig'.pyright.setup{}

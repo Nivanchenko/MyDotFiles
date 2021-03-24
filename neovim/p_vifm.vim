@@ -1,0 +1,8 @@
+"call plug#begin(plugspath)
+"    Plug 'vifm/vifm.vim'
+"call plug#end()
+map <Leader>vv :Vifm<CR>
+map <Leader>vs :VsplitVifm<CR>
+map <Leader>sp :SplitVifm<CR>
+map <Leader>dv :DiffVifm<CR>
+map <Leader>tv :TabVifm<CR>
