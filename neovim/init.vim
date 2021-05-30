@@ -28,3 +28,6 @@ call LoadConfFile('p_popup.vim')
 call LoadConfFile('p_plenary.vim')
 call LoadConfFile('p_telescope.vim')
 call LoadConfFile('p_gruvbox.vim')
+
+"Experemental
+"call LoadConfFile('p_nvim-compe.vim')

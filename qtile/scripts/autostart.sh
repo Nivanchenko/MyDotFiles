@@ -61,5 +61,5 @@ libinput-gestures-setup start &
 dispad &
 nitrogen --restore &
 #lang swich
-setxkbmap -layout 'us,ru' -option 'grp:caps_toggle' &
+setxkbmap -layout 'us,ru' -option 'grp:alt_shift_toggle' &
 echo 'auto' > '/sys/bus/pci/devices/0000:01:00.0/power/control' &

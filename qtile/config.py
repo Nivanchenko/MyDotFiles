@@ -41,6 +41,16 @@ mod1 = "alt"
 mod2 = "control"
 home = os.path.expanduser('~')
 net_interface  =  'wlp2s0'
+inputmode = True
+
+def get_text_mode():
+    if inputmode == True:
+        return 'Normal'
+    else:
+        return 'Vim'
+
+def set_mode(mode):
+    inputmode = mode
 
 def get_keyboard_layout():
     return subprocess.check_output(['xkb-switch', '-p']).decode("utf-8").strip('\n')
@@ -58,6 +68,8 @@ def window_to_next_group(qtile):
         qtile.currentWindow.togroup(qtile.groups[i + 1].name)
 
 keys = [
+
+    Key([mod2], "F12", lazy.function(set_mode,False)),
 
 # FUNCTION KEYS
 
@@ -468,6 +480,13 @@ def init_widgets_list():
                #          background = colors[1]
                #          ),
                # # battery option 2  from Qtile
+                widget.Sep(
+                         linewidth = 1,
+                         padding = 10,
+                         foreground = colors[2],
+                         background = colors[1]
+                         ),
+                widget.GenPollText(update_interval=1, func=get_text_mode) ,
                 widget.Sep(
                          linewidth = 1,
                          padding = 10,
