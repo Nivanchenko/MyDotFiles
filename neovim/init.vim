@@ -31,3 +31,5 @@ call LoadConfFile('p_gruvbox.vim')
 
 "Experemental
 "call LoadConfFile('p_nvim-compe.vim')
+
+lua require('main')
